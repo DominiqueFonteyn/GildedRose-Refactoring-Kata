@@ -73,29 +73,42 @@ public class GildedRose
 
     private static void IncreaseItemQuality(Item item)
     {
-        if (item.Quality >= MaxItemQuality)
-            return;
-
-        item.Quality = item.Quality + 1;
-
         if (item.Name != BackstagePassesToATafkal80EtcConcert)
+        {
+            AlterQuality(item, 1);
             return;
+        }
+        
+        if (item.SellIn < 6)
+        {
+            AlterQuality(item, 3);
+            return;
+        }
         
         if (item.SellIn < 11)
         {
-            if (item.Quality < MaxItemQuality)
-            {
-                item.Quality = item.Quality + 1;
-            }
+            AlterQuality(item, 2);
+            return;
+        }
+        
+        AlterQuality(item, 1);
+    }
+
+    private static void AlterQuality(Item item, int quality)
+    {
+        if (item.Quality + quality > 50)
+        {
+            item.Quality = 50;
+            return;
         }
 
-        if (item.SellIn < 6)
+        if (item.Quality + quality < 0)
         {
-            if (item.Quality < MaxItemQuality)
-            {
-                item.Quality = item.Quality + 1;
-            }
+            item.Quality = 0;
+            return;
         }
+        
+        item.Quality += quality;
     }
 
     private static bool IsNotLegendaryItem(Item item)
