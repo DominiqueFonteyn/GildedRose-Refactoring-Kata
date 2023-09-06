@@ -21,17 +21,7 @@ public class GildedRose
     {
         foreach (var item in _items)
         {
-            if (item.Name != AgedBrie && item.Name != BackstagePassesToATafkal80EtcConcert)
-            {
-                if (item.Quality > MinItemQuality)
-                {
-                    if (IsNotLegendaryItem(item))
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
-                }
-            }
-            else
+            if (item.Name is AgedBrie or BackstagePassesToATafkal80EtcConcert)
             {
                 if (item.Quality < MaxItemQuality)
                 {
@@ -54,6 +44,16 @@ public class GildedRose
                                 item.Quality = item.Quality + 1;
                             }
                         }
+                    }
+                }
+            }
+            else
+            {
+                if (item.Quality > MinItemQuality)
+                {
+                    if (IsNotLegendaryItem(item))
+                    {
+                        item.Quality = item.Quality - 1;
                     }
                 }
             }
