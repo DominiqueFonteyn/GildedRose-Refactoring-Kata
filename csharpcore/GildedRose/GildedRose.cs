@@ -23,29 +23,7 @@ public class GildedRose
         {
             if (item.Name is AgedBrie or BackstagePassesToATafkal80EtcConcert)
             {
-                if (item.Quality < MaxItemQuality)
-                {
-                    item.Quality = item.Quality + 1;
-
-                    if (item.Name == BackstagePassesToATafkal80EtcConcert)
-                    {
-                        if (item.SellIn < 11)
-                        {
-                            if (item.Quality < MaxItemQuality)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
-                        }
-
-                        if (item.SellIn < 6)
-                        {
-                            if (item.Quality < MaxItemQuality)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
-                        }
-                    }
-                }
+                IncreaseItemQuality(item);
             }
             else
             {
@@ -89,6 +67,33 @@ public class GildedRose
                         item.Quality = item.Quality + 1;
                     }
                 }
+            }
+        }
+    }
+
+    private static void IncreaseItemQuality(Item item)
+    {
+        if (item.Quality >= MaxItemQuality)
+            return;
+
+        item.Quality = item.Quality + 1;
+
+        if (item.Name != BackstagePassesToATafkal80EtcConcert)
+            return;
+        
+        if (item.SellIn < 11)
+        {
+            if (item.Quality < MaxItemQuality)
+            {
+                item.Quality = item.Quality + 1;
+            }
+        }
+
+        if (item.SellIn < 6)
+        {
+            if (item.Quality < MaxItemQuality)
+            {
+                item.Quality = item.Quality + 1;
             }
         }
     }
