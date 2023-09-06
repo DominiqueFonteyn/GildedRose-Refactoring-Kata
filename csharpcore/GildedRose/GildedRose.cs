@@ -8,6 +8,7 @@ public class GildedRose
     private const string BackstagePassesToATafkal80EtcConcert = "Backstage passes to a TAFKAL80ETC concert";
     private const string SulfurasHandOfRagnaros = "Sulfuras, Hand of Ragnaros";
     private const int MaxItemQuality = 50;
+    private const int MinItemQuality = 0;
 
     private readonly IList<Item> _items;
 
@@ -22,7 +23,7 @@ public class GildedRose
         {
             if (item.Name != AgedBrie && item.Name != BackstagePassesToATafkal80EtcConcert)
             {
-                if (item.Quality > 0)
+                if (item.Quality > MinItemQuality)
                 {
                     if (IsNotLegendaryItem(item))
                     {
@@ -68,7 +69,7 @@ public class GildedRose
                 {
                     if (item.Name != BackstagePassesToATafkal80EtcConcert)
                     {
-                        if (item.Quality > 0)
+                        if (item.Quality > MinItemQuality)
                         {
                             if (IsNotLegendaryItem(item))
                             {
