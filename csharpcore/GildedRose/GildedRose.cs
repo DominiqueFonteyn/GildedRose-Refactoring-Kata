@@ -7,7 +7,8 @@ public class GildedRose
     private const string AgedBrie = "Aged Brie";
     private const string BackstagePassesToATafkal80EtcConcert = "Backstage passes to a TAFKAL80ETC concert";
     private const string SulfurasHandOfRagnaros = "Sulfuras, Hand of Ragnaros";
-    
+    private const int MaxItemQuality = 50;
+
     private readonly IList<Item> _items;
 
     public GildedRose(IList<Item> items)
@@ -31,7 +32,7 @@ public class GildedRose
             }
             else
             {
-                if (_items[i].Quality < 50)
+                if (_items[i].Quality < MaxItemQuality)
                 {
                     _items[i].Quality = _items[i].Quality + 1;
 
@@ -39,7 +40,7 @@ public class GildedRose
                     {
                         if (_items[i].SellIn < 11)
                         {
-                            if (_items[i].Quality < 50)
+                            if (_items[i].Quality < MaxItemQuality)
                             {
                                 _items[i].Quality = _items[i].Quality + 1;
                             }
@@ -47,7 +48,7 @@ public class GildedRose
 
                         if (_items[i].SellIn < 6)
                         {
-                            if (_items[i].Quality < 50)
+                            if (_items[i].Quality < MaxItemQuality)
                             {
                                 _items[i].Quality = _items[i].Quality + 1;
                             }
@@ -82,7 +83,7 @@ public class GildedRose
                 }
                 else
                 {
-                    if (_items[i].Quality < 50)
+                    if (_items[i].Quality < MaxItemQuality)
                     {
                         _items[i].Quality = _items[i].Quality + 1;
                     }
