@@ -24,7 +24,7 @@ public class GildedRose
             {
                 if (item.Quality > 0)
                 {
-                    if (item.Name != SulfurasHandOfRagnaros)
+                    if (IsNotLegendaryItem(item))
                     {
                         item.Quality = item.Quality - 1;
                     }
@@ -57,7 +57,7 @@ public class GildedRose
                 }
             }
 
-            if (item.Name != SulfurasHandOfRagnaros)
+            if (IsNotLegendaryItem(item))
             {
                 item.SellIn = item.SellIn - 1;
             }
@@ -70,7 +70,7 @@ public class GildedRose
                     {
                         if (item.Quality > 0)
                         {
-                            if (item.Name != SulfurasHandOfRagnaros)
+                            if (IsNotLegendaryItem(item))
                             {
                                 item.Quality = item.Quality - 1;
                             }
@@ -90,5 +90,10 @@ public class GildedRose
                 }
             }
         }
+    }
+
+    private static bool IsNotLegendaryItem(Item item)
+    {
+        return item.Name != SulfurasHandOfRagnaros;
     }
 }
