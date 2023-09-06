@@ -61,4 +61,19 @@ public class GildedRoseTest
         
         Assert.Equal(12, items[0].Quality);
     }
+
+    [Fact]
+    public void ItemQuality_SomeItem_QualityDecreasesByOne()
+    {
+        const int initialQuality = 10;
+        var items = new List<Item>
+        {
+            new Item { Name = "SomeItem", SellIn = 5, Quality = initialQuality }
+        };
+        var app = new GildedRose(items);
+        
+        app.UpdateQuality();
+        
+        Assert.Equal(initialQuality - 1, items[0].Quality);
+    }
 }
